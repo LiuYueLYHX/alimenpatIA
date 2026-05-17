@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+
+const authMiddleware = require('../middlewares/authMiddleware');
+const meController = require('../controllers/meController');
+
+router.get('/settings', authMiddleware, meController.getSettings);
+router.put('/name', authMiddleware, meController.updateName);      
+router.put('/password', authMiddleware, meController.updatePassword);
+
+module.exports = router;
